@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>stop watch</title>
+	<style type="text/css">
+		*{
+		
+			padding: 10px;
+			font-family: sans-serif;
+		}
+		body{
+	
+			background: green;
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+		}
+		}
+		.container{
+			width: 300px;
+			margin: 100px auto;
+			padding: 60px 50px 100px;
+			text-align: center;
+			font-size: 40px;
+		}
+		.watch{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+		}
+		h1{
+			color: deeppink;
+			text-align: center;
+			font-size: 50px;
+			text-shadow:  3px -3px 6px #f3f3f3, -3px 3px 6px #fff;;
+		}
+		.digit{
+			font-size: 150px;
+			color: blue;
+		}
+		.txt{
+			font-size: 100px;
+			text-align: center;
+			color: #fff;
+			
+		}
+		button{
+			width: 100px;
+			paddin: 150px;
+			margin: 0px 20px;
+			border-radius: 10px 10px 10px  10px;
+			cursor: pointer;
+			font-size: 20px;
+			color: #000;	
+			align-items: center;		
+			justify-content: center;
+			box-shadow: 3px -3px 6px #f3f3f3, -3px 3px 6px #fff;
+			border: none;
+		}
+		.buttons{
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+		#Start {
+			background-color:blue ;
+
+		}
+		#stop{
+				background-color:greenyellow ;
+			}
+		#reset{
+			background-color:darkred;
+		}		
+
+	</style>
+</head>
+<body>
+	<main class="container">
+		<h1>STOP WATCH</h1>
+	<div class="watch" id="stopwatch">
+		<div class="digit" id="hour">00</div>
+		<div class="txt">:</div>
+		<div class="digit" id="min">00</div>
+		<div class="txt">:</div>
+		<div class="digit" id="sec">00</div>
+		<div class="txt">:</div>
+
+	</div>
+</main>
+	
+	<div class="buttons">
+	<button  id="Start" onclick="StartStopwatch()">Start</button>
+	<button id="stop" onclick="StopStopwatch()">Stop</button>
+	<button id="reset" onclick="resetStopwatch()">reset</button>
+</div>
+
+
+	<script type="text/javascript">
+		let hr_p = document.getElementById('hour')
+		let min_p = document.getElementById('min')
+		let sec_p = document.getElementById('sec')
+		let hr = 0;
+		let min = 0;
+		let sec = 0;
+
+		let start = () => {
+			sec++;
+			sec_p.innerText = sec;
+			if(sec >= 59){
+				sec = 0;
+				min++;
+				min_p.innerHTML = min;
+				if(min >= 59){
+					min =0;
+					hr++;
+					hr_p.innerHTML = hr;
+
+				}
+			} 
+			if(sec_p < 10){
+				sec.innerText= `0${sec_p}`;
+			}
+			if(min_p < 10){
+				min.innerText= `0${min_p}`;
+			}
+			if(hr_p < 10){
+				hr.innerText= `0${hr_p}`;
+			}
+		} 
+		const StartStopwatch = ()=>{
+
+			return startbtn = setInterval(start,1000);
+		}
+		const StopStopwatch = ()=>{
+			clearInterval(startbtn);
+
+		}
+		const resetStopwatch = ()=>{
+			clearInterval(startbtn);
+			hr = 0;
+			min = 0;
+			sec = 0;
+			hr_p.innerText = "00";
+			min_p.innerText = "00";
+			sec_p.innerText = "00";
+
+
+		}
+	</script>
+
+</body>
+</html>
